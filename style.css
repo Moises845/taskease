@@ -1,11 +1,11 @@
-/* styles.css */
+/* Estilos base */
 
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom, #90EE90, #FFFFFF); /* Degradado lineal de verde menta a blanco */
-    background-attachment: fixed; /* Mantener el fondo estático */
+    background: linear-gradient(to bottom, #90EE90, #FFFFFF);
+    background-attachment: fixed;
 }
 
 .container {
@@ -24,21 +24,20 @@ h1 {
 }
 
 input[type="text"] {
-    width: calc(100% - 120px); /* Ajustar el ancho para moverlo más a la derecha */
+    width: calc(100% - 120px);
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-right: 5px; /* Reducir el margen derecho */
-    margin-left: 5px; /* Reducir el margen izquierdo */
-    outline: none; /* Eliminar el borde de enfoque */
+    margin-right: 5px;
+    margin-left: 5px;
+    outline: none;
 }
-
 
 button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #ff69b4; /* Color rosa suave */
+    background-color: #ff69b4;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -47,7 +46,7 @@ button {
 }
 
 button:hover {
-    background-color: #ff1493; /* Cambio de color rosa más oscuro al pasar el mouse */
+    background-color: #ff1493;
 }
 
 ul {
@@ -56,69 +55,57 @@ ul {
 }
 
 li {
-    background-color: #fff; /* Cambiado a blanco */
-    padding: 30px; /* Aumento del espacio alrededor del texto */
+    background-color: #fff;
+    padding: 30px;
     border-radius: 8px;
     margin-bottom: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 1); /* Sombra sutil */
-    transition: background-color 0.3s, transform 0.3s; /* Transición para el color de fondo y la transformación */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+    transition: background-color 0.3s, transform 0.3s;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position:relative; /* Agregar posición relativa para permitir posicionar el cuadro de verificación */
-    text-align: center; /* Centrar el texto */
+    position: relative;
+    text-align: center;
 }
 
-/* styles.css */
-
-/* Otras reglas de estilo aquí... */
-
-/* Crear el cuadro de verificación */
 li::before {
-    content: ''; /* Contenido vacío */
+    content: '';
     display: inline-block;
-    width: 20px; /* Tamaño del cuadro de verificación */
-    height: 20px; /* Tamaño del cuadro de verificación */
-    border: 2px solid #4caf50; /* Borde del cuadro de verificación */
-    border-radius: 3px; /* Borde redondeado */
-    position: absolute; /* Posicionamiento absoluto en relación al elemento padre */
-    left: 0; /* Colocar a la izquierda del elemento padre */
-    top: 50%; /* Centrar verticalmente */
-    transform: translateY(-50%); /* Centrar verticalmente */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #4caf50;
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-/* Estilo del marcado de verificación dentro del cuadro */
 li.completed::after {
-    content: '\2713'; /* Código Unicode para la marca de verificación */
-    font-size: 16px; /* Tamaño de la marca de verificación */
-    color: #4caf50; /* Color de la marca de verificación */
-    position: absolute; /* Posicionamiento absoluto en relación al elemento padre */
-    left: 4px; /* Posicionamiento para centrar la marca de verificación */
-    top: 50%; /* Centrar verticalmente */
-    transform: translateY(-50%); /* Centrar verticalmente */
-}
-
-/* Estilo para los elementos completados */
-li.completed {
-    text-decoration: line-through;
+    content: '\2713';
+    font-size: 16px;
+    color: #4caf50;
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .delete-button {
-    background-color: #ff0000; /* Cambiado a rojo */
+    background-color: #ff0000;
     color: white;
     border: none;
-    padding: 8px 12px; /* Ajuste del tamaño del botón */
+    padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .delete-button:hover {
-    background-color: #cc0000; /* Cambio de color al pasar el mouse */
+    background-color: #cc0000;
 }
 
-/* Transición para desaparecer cuando se elimina un elemento */
 li.fade-out {
     opacity: 0;
     height: 0;
@@ -126,3 +113,50 @@ li.fade-out {
     margin: 0;
     transition: opacity 0.5s ease-out, height 0.5s ease-out, padding 0.5s ease-out, margin 0.5s ease-out;
 }
+
+/* Media Queries para hacer responsive */
+
+@media only screen and (max-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+
+    li {
+        padding: 20px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    input[type="text"] {
+        width: calc(100% - 80px);
+    }
+}
+
+/* CSS para animaciones */
+li {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.delete-button {
+    transition: transform 0.3s ease-in-out;
+}
+
+.completed {
+    opacity: 0.5;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+li.new-task {
+    animation: fadeIn 0.3s ease-in-out;
+}
+

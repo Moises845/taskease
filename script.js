@@ -21,15 +21,20 @@ function addTask() {
 
         taskList.appendChild(li);
         taskInput.value = '';
+        li.classList.add('new-task'); // Agregar la clase new-task
         saveTasks();
     }
 }
 
+
 // Función para marcar/desmarcar una tarea como completada
-function toggleTask() {
-    this.classList.toggle('completed');
-    saveTasks();
+function toggleTask(event) {
+    if (event.target.tagName !== 'BUTTON') { // Verificar si el clic no fue en un botón
+        event.currentTarget.classList.toggle('completed');
+        saveTasks();
+    }
 }
+
 
 // Función para guardar las tareas en el almacenamiento local del navegador
 function saveTasks() {
